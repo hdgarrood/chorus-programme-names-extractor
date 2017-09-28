@@ -76,17 +76,22 @@ function generateProgrammeNamesString(parse) {
 
 function error(msg) {
   console.error(msg);
+  document.getElementById("result-message").textContent = "Error: " + msg;
 }
 
 function go() {
+  document.getElementById("result-message").textContent = "";
   var file = document.getElementById("csv-file-input").files[0];
   Papa.parse(file, { header: true, skipEmptyLines: true,
     complete: parse => {
       var str = generateProgrammeNamesString(parse);
-      document.getElementById("result-message").textContent = "Everything seems ok";
-      document.getElementById("result").value = str;
+      if (str !== undefined) {
+        document.getElementById("result-message").textContent = "Everything seems ok";
+        document.getElementById("result").value = str;
+      }
     }
   });
 }
 
 document.getElementById("go-button").addEventListener("click", go);
+document.getElementById("result").value = "";
