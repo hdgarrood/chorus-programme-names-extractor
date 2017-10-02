@@ -86,6 +86,7 @@ function go() {
   var file = document.getElementById("csv-file-input").files[0];
   Papa.parse(file, { header: true, skipEmptyLines: true,
     complete: parse => {
+      window.parsedCsvData = parse;
       var str = generateProgrammeNamesString(parse);
       if (str !== undefined) {
         document.getElementById("result-message").textContent = "Everything seems ok";
