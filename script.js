@@ -16,8 +16,8 @@ function getSpreadsheetId() {
 
 // This is horribly anglocentric
 function compareNames(a, b) {
-  var a_ = a.toUpperCase().split(/ +/);
-  var b_ = b.toUpperCase().split(/ +/);
+  var a_ = a.trim().toUpperCase().split(/ +/);
+  var b_ = b.trim().toUpperCase().split(/ +/);
   var last = (arr) => arr[arr.length - 1];
 
   if (last(a_) > last(b_)) {
